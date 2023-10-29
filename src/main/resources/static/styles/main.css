@@ -17,6 +17,10 @@ table, th, td {
     margin-left: 20px;
 }
 
+table.user, th, td {    
+    border: none;
+}
+
 table.errorpage td {
     vertical-align: top;
 }

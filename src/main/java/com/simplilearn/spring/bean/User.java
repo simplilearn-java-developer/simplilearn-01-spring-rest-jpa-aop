@@ -2,6 +2,8 @@ package com.simplilearn.spring.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class User {
 
     int idUser;
@@ -9,6 +11,8 @@ public class User {
     String password;
     String firstName;
     String lastName;
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     Date birth;
     String status;
 

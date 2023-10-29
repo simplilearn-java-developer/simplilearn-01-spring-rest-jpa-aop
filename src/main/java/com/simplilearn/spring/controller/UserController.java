@@ -15,26 +15,34 @@ import com.simplilearn.spring.service.UserService;
 @Controller
 public class UserController {
 
-	final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
-	@Autowired
-	UserService userService;
-	
+    final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Autowired
+    UserService userService;
+
     @GetMapping("/")
     String showIndex() {
 
-    	logger.debug("Showing Index...");
-    	
+        logger.debug("Showing Index...");
+
         return "index";
     }
-    
+
     @GetMapping("/list")
     ModelAndView list() {
-    	
-    	logger.debug("Listing Users...");
 
-    	List<User> users = this.userService.list();
-    	
-    	return new ModelAndView("list","users",users);
+        logger.debug("Listing Users...");
+
+        List<User> users = this.userService.list();
+
+        return new ModelAndView("list","users",users);
+    }
+
+    @GetMapping("/create")
+    String showCreate(User user) {
+
+        logger.debug("Showing Create...");
+
+        return "create";
     }
 }
