@@ -2,6 +2,7 @@
 # Tomcat Server
 server:
   port: 8080
+  error.include-stacktrace: always
 
 # Logger  
 logging.level:
