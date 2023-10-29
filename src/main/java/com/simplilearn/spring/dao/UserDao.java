@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.simplilearn.spring.bean.User;
+import com.simplilearn.spring.dao.mapper.UserMapper;
 
 @Repository
 public class UserDao {
@@ -18,8 +19,7 @@ public class UserDao {
 		
 		String sql = "SELECT * FROM USER";
 		
-		
-		
+		return this.jdbcTemplate.query(sql, new UserMapper());
 	}
 
 }
