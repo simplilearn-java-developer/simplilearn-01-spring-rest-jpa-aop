@@ -7,6 +7,7 @@ server:
 # Logger  
 logging.level:
   web: DEBUG
+  '[com.simplilearn.spring]': DEBUG
 
 spring:
 # Database Settings
