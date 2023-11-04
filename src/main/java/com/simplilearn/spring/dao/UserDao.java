@@ -32,11 +32,33 @@ public class UserDao {
                     user.getBirth(), "A");
     }
 
+    public User findUser(int idUser) {
+
+        String sql = "SELECT * FROM USER WHERE ID_USER = ?";
+
+        return DataAccessUtils.singleResult(this.jdbcTemplate.query(sql, new UserMapper(), idUser));
+    }
+
     public User findUser(User user) {
 
         String sql = "SELECT * FROM USER WHERE ID_USER!=? AND UPPER(USERNAME) = UPPER(?)";
 
         return DataAccessUtils.singleResult(this.jdbcTemplate.query(sql, new UserMapper(), user.getIdUser(), user.getUsername()));
+    }
+
+    public void updateUser(User user) {
+
+        String sql = "UPDATE USER SET USERNAME = ?, FIRST_NAME = ?, LAST_NAME = ?, BIRTH = ? WHERE ID_USER = ?";
+
+        this.jdbcTemplate.update(sql, user.getUsername(), user.getFirstName(), user.getLastName(),
+                user.getBirth(), user.getIdUser());
+    }
+
+    public void deleteUser(int idUser) {
+
+        String sql = "DELETE FROM USER WHERE ID_USER = ?";
+
+        this.jdbcTemplate.update(sql, idUser);
     }
 
 }

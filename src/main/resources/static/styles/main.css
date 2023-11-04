@@ -28,3 +28,7 @@ table.errorpage td {
 span.error-message {
     color: red;
 }
+
+input[readonly] {
+    background-color: lightgray ;
+}
