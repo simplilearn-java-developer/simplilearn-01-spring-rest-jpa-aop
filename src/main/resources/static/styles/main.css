@@ -17,10 +17,14 @@ table, th, td {
     margin-left: 20px;
 }
 
-table.user, th, td {    
+table.user, table.user th, table.user td {
     border: none;
 }
 
 table.errorpage td {
     vertical-align: top;
+}
+
+span.error-message {
+    color: red;
 }

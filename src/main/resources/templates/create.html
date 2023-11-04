@@ -23,6 +23,7 @@
         <th>Username:</th>
         <td>
             <input type="text" th:field="*{username}" required>
+            <span class="error-message" th:errors="*{username}"></span>
         </td>
       </tr>
       <tr>
