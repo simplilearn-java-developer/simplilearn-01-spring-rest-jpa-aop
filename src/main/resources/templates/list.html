@@ -10,24 +10,21 @@
   <br>
   <h2>User List</h2>
   <table>
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Username</th>
-      <th>Birth</th>
-      <th>Status</th>
-      <th>#</th>
-      <th>#</th>
-    </tr>
-    <tr th:each="user: ${users}" >
-      <th scope="row" th:text="${user.idUser}"/>
-      <td th:text="${user.firstName} + ' ' + ${user.lastName}"/>
-      <td th:text="${#strings.toUpperCase(user.username)}"/>
-      <td th:text="${#dates.format(user.birth, 'dd-MM-yyyy')}"/>
-      <td th:text="${user.status}"/>
-      <td><a th:href="@{/update/} + ${user.idUser}">Update</a></td>
-      <td><a th:href="@{/delete/} + ${user.idUser}">Delete</a></td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Birth</th>
+        <th>Status</th>
+        <th>#</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
   </table>
+  <div th:replace="~{fragments :: scripts}"></div>
+  <script th:src="@{/js/list.js}"></script>
 </body>
 </html>
