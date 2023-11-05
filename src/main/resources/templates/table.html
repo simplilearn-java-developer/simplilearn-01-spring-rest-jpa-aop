@@ -7,7 +7,7 @@
 </head>
 <body>
   <div th:replace="~{fragments :: header}"></div>
-<br>
+  <br>
   <h2>User Table</h2>
   <table border='1' th:if="${#objects.nullSafe(user,false)}">
     <tr>
@@ -28,11 +28,11 @@
     </tr>
     <tr>
       <th>Birth</th>
-      <td th:text="${#dates.format(user.birth, 'dd-MM-yyyy')}"/>
+      <td th:text="${#dates.format(user?.birth, 'dd-MM-yyyy')}"/>
     </tr>
     <tr>
       <th>Status</th>
-      <td th:text="${user.status}"/>
+      <td th:text="${user?.status}"/>
     </tr>
   </table>
   <table border='1' th:if="!${#objects.nullSafe(user,false)}"}>

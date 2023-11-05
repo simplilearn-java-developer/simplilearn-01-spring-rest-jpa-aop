@@ -15,3 +15,11 @@ spring:
     url: jdbc:mysql://localhost:3306/mydb
     username: root
     password: rootroot
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: validate
+        '[format_sql]': true
+        dialect: org.hibernate.dialect.MySQLDialect
+        naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy

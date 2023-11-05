@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.simplilearn.spring.bean.User;
-import com.simplilearn.spring.dao.UserDao;
+import com.simplilearn.spring.jpa.User;
+import com.simplilearn.spring.repository.UserRepository;
 
 @Service
 public class UserService {
 
     @Autowired
-    UserDao userDao;
+    UserRepository userRepository;
 
     public List<User> list() {
 
@@ -20,35 +20,49 @@ public class UserService {
          * Add some Business Logic to process the list.
          */
 
-        return this.userDao.list();
+        return this.userRepository.findAll();
     }
 
     public void createUser(User user) {
 
         this.validateUser(user);
-        this.userDao.createUser(user);
+
+        user.setStatus("A");
+        this.userRepository.save(user);
     }
 
     public User findUser(User user) {
-        return this.userDao.findUser(user);
+        return this.userRepository.findByIdUserNotAndUsernameIgnoreCase(user.getIdUser(), user.getUsername());
     }
 
+
     public User findUser(int idUser) {
-    	return this.userDao.findUser(idUser);
+        return this.userRepository.findById(idUser).orElse(null);
     }
 
     public void updateUser(User user) {
 
         this.validateUser(user);
-        this.userDao.updateUser(user);
+
+        this.userRepository.findById(user.getIdUser())
+                              .ifPresent(u -> {
+                                  u.setFirstName(user.getFirstName());
+                                  u.setLastName(user.getLastName());
+                                  u.setUsername(user.getUsername());
+                                  u.setBirth(user.getBirth());
+
+                                  this.userRepository.save(u);
+                              });
     }
 
     public void deleteUser(int idUser) {
-    	this.userDao.deleteUser(idUser);
+        this.userRepository.deleteById(idUser);
     }
-    
+
     private void validateUser(User user) {
-        if (user.getFirstName().isEmpty() || user.getLastName().isEmpty() || user.getUsername().isEmpty()) {
+        if (user.getFirstName().isEmpty() ||
+            user.getLastName().isEmpty() ||
+            user.getUsername().isEmpty()) {
             throw new RuntimeException("Invalid User Data: " + user);
         }
 
