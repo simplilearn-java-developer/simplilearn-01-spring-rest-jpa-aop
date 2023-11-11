@@ -46,46 +46,6 @@ public class ShowController {
 
         return new ModelAndView("update","id",id);
     }
-    /*
-    @PostMapping("/create")
-    String createUser(User user, BindingResult result) {
-
-        logger.debug("Creating User... {}",user);
-
-
-        if (result.hasErrors()) {
-            return "create";
-        }
-
-
-        return "redirect:/list";
-    }
-
-
-
-    @PostMapping("/update")
-    String updateUser(User user, BindingResult result) {
-
-        logger.debug("Updating User... {}",user);
-
-        this.validateUsername(user, result);
-
-        if (result.hasErrors()) {
-            return "update";
-        }
-
-
-        return "redirect:/list";
-    }
-
-    @GetMapping("/delete/{id}")
-    String deleteUser(@PathVariable int id) {
-
-        logger.debug("Deleting User... UserID: {}", id);
-
-
-        return "redirect:/list";
-    }
 
     @GetMapping("/search")
     String showSearch() {
@@ -94,15 +54,4 @@ public class ShowController {
 
         return "search";
     }
-
-    @PostMapping("/search")
-    ModelAndView searchUser(@RequestParam int id) {
-
-        logger.debug("Searching User... UserID: {}", id);
-
-
-        return new ModelAndView("table","user",user);
-    }*/
-
-
 }

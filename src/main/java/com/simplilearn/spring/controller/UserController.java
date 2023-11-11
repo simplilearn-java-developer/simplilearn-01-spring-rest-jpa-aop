@@ -72,7 +72,7 @@ public class UserController {
         this.userService.deleteUser(id);
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     String showSearch() {
 
         logger.debug("Showing Search...");
