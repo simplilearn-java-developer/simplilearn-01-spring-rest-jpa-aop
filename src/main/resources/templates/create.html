@@ -9,37 +9,36 @@
   <div th:replace="~{fragments :: header}"></div>
 <br>
   <h2>User Create</h2>
-  <form action="/create" th:object="${user}" method="post">
+  <form>
     <table class="user">
       <tr>
         <th>First Name:</th>
-        <td><input type="text" th:field="*{firstName}" required></td>
+        <td><input type="text" id="firstName"></td>
       </tr>
       <tr>
         <th>Last Name:</th>
-        <td><input type="text" th:field="*{lastName}" required></td>
+        <td><input type="text" id="lastName"></td>
       </tr>
       <tr>
         <th>Username:</th>
-        <td>
-            <input type="text" th:field="*{username}" required>
-            <span class="error-message" th:errors="*{username}"></span>
-        </td>
+        <td><input type="text" id="username"></td>
       </tr>
       <tr>
         <th>Password:</th>
-        <td><input type="password" th:field="*{password}" required></td>
+        <td><input type="password" id="password"></td>
       </tr>
       <tr>
         <th>Birth:</th>
-        <td><input type="date" th:field="*{birth}" required></td>
+        <td><input type="date" id="birth"></td>
       </tr>
       <tr>
           <td colspan="2">
-              <input type="submit" value="Create">
+              <input type="button" id="create" value="Create">
           </td>
       </tr>
     </table>
   </form>
+  <div th:replace="~{fragments :: scripts}"></div>
+  <script th:src="@{/js/create.js}"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@ public class ShowController {
     @GetMapping("/list")
     String list() {
 
-        logger.debug("Showing Users...");
+        logger.debug("Showing List...");
 
         return "list";
     }

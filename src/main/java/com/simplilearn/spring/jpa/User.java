@@ -48,6 +48,11 @@ public class User implements Serializable{
     public User() {
     }
 
+    public User(int idUser, String username) {
+        this.idUser = idUser;
+        this.username = username;
+    }
+
     public User(int idUser, String username, String password, String firstName, String lastName, Date birth,
             String status) {
         this.idUser = idUser;
@@ -79,14 +84,14 @@ public class User implements Serializable{
     }
 
     public String getFirstName() {
-		return firstName;
-	}
+        return firstName;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getLastName() {
+    public String getLastName() {
         return lastName;
     }
     public void setLastName(String lastName) {
