@@ -9,37 +9,36 @@
   <div th:replace="~{fragments :: header}"></div>
 <br>
   <h2>User Update</h2>
-  <form action="/update" th:object="${user}" method="post">
-    <table class="user">
+  <form>
+    <table>
       <tr>
         <th>Id:</th>
-        <td><input type="text" th:field="*{idUser}" readonly></td>
+        <td><input type="text" id="idUser" th:value="${id}" readonly></td>
       </tr>
       <tr>
         <th>First Name:</th>
-        <td><input type="text" th:field="*{firstName}" required></td>
+        <td><input type="text" id="firstName"></td>
       </tr>
       <tr>
         <th>Last Name:</th>
-        <td><input type="text" th:field="*{lastName}" required></td>
+        <td><input type="text" id="lastName"></td>
       </tr>
       <tr>
         <th>Username:</th>
-        <td>
-            <input type="text" th:field="*{username}" required>
-            <span class="error-message" th:errors="*{username}"></span>
-        </td>
+        <td><input type="text" id="username"></td>
       </tr>
       <tr>
         <th>Birth:</th>
-        <td><input type="date" th:field="*{birth}" required></td>
+        <td><input type="date" id="birth"></td>
       </tr>
       <tr>
           <td colspan="2">
-              <input type="submit" value="Update">
+              <input type="button" id="update" value="Update">
           </td>
       </tr>
     </table>
   </form>
+  <div th:replace="~{fragments :: scripts}"></div>
+  <script th:src="@{/js/update.js}"></script>
 </body>
 </html>

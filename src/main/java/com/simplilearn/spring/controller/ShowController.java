@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.simplilearn.spring.jpa.User;
 
@@ -37,6 +39,13 @@ public class ShowController {
         return "create";
     }
 
+    @GetMapping("/update/{id}")
+    ModelAndView showUpdate(@PathVariable int id) {
+
+        logger.debug("Showing Update... UserID: {}", id);
+
+        return new ModelAndView("update","id",id);
+    }
     /*
     @PostMapping("/create")
     String createUser(User user, BindingResult result) {
@@ -52,14 +61,7 @@ public class ShowController {
         return "redirect:/list";
     }
 
-    @GetMapping("/update/{id}")
-    ModelAndView showUpdate(@PathVariable int id) {
 
-        logger.debug("Showing Update... UserID: {}", id);
-
-
-        return new ModelAndView("update","user",user);
-    }
 
     @PostMapping("/update")
     String updateUser(User user, BindingResult result) {
