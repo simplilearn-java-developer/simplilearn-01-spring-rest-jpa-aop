@@ -1,0 +1,41 @@
+
+https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/aop.html
+https://reflectoring.io/aop-spring/
+https://www.digitalocean.com/community/tutorials/spring-aop-example-tutorial-aspect-advice-pointcut-joinpoint-annotations
+
+ASPECT ORIENTED PROGRAMMING CORE CONCEPTS
+*****************************************
+
+In Object Oriented Programming, modularity of application is achieved by Classes whereas in
+Aspect Oriented Programming application modularity is achieved by Aspects and they are configured
+to cut across different classes.
+
+
+Before we dive into the implementation of Spring AOP implementation, we should understand the core
+concepts of AOP.
+
+ASPECT: An aspect is a class that implements enterprise application concerns that cut across multiple
+classes, such as transaction management. Aspects can be a normal class configured through Spring XML
+configuration or we can use Spring AspectJ integration to define a class as Aspect using @Aspect annotation.
+
+JOIN POINT: A join point is a specific point in the application such as method execution, exception
+handling, changing object variable values, etc. In Spring AOP a join point is always the execution of a method.
+
+ADVICE: Advices are actions taken for a particular join point. In terms of programming, they are methods
+that get executed when a certain join point with matching pointcut is reached in the application. You can
+think of Advices as Struts2 interceptors or Servlet Filters.
+
+POINTCUT: Pointcut is expressions that are matched with join points to determine whether advice needs to
+be executed or not. Pointcut uses different kinds of expressions that are matched with the join points and
+Spring framework uses the AspectJ pointcut expression language.
+
+TARGET OBJECT: They are the object on which advices are applied. Spring AOP is implemented using runtime
+proxies so this object is always a proxied object. What is means is that a subclass is created at runtime
+where the target method is overridden and advice are included based on their configuration.
+
+AOP PROXY: Spring AOP implementation uses JDK dynamic proxy to create the Proxy classes with target classes
+and advice invocations, these are called AOP proxy classes. We can also use CGLIB proxy by adding it as
+the dependency in the Spring AOP project.
+
+Weaving: It is the process of linking aspects with other objects to create the advised proxy objects. This
+can be done at compile time, load time or at runtime. Spring AOP performs weaving at the runtime.
