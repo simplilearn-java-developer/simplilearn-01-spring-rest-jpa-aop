@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.simplilearn.spring.aop.annotation.Loggable;
 import com.simplilearn.spring.jpa.User;
 import com.simplilearn.spring.service.UserService;
 
@@ -40,6 +41,7 @@ public class UserController {
         this.userService.createUser(user);
     }
 
+    @Loggable
     @GetMapping("/users/{id}")
     User searchUser(@PathVariable int id) {
 
